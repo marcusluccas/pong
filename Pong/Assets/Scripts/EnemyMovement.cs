@@ -6,7 +6,7 @@ public class EnemyMovement : MonoBehaviour
 {
     Rigidbody2D myRB;
     GameObject ball;
-    float speed = 2f;
+    float speed = 1.5f;
 
     // Start is called before the first frame update
     void Start()

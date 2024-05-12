@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Wall
   - Ball
+  - ScorePointPlayer
+  - ScorePointEnemy
   layers:
   - Default
   - TransparentFX

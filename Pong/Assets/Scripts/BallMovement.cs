@@ -5,7 +5,8 @@ using UnityEngine;
 public class BallMovement : MonoBehaviour
 {
     Rigidbody2D myRB;
-    float speed = 4f;
+    float speed = 6f;
+    ScoreManager scoreManager;
 
     // Start is called before the first frame update
     void Start()
@@ -13,6 +14,8 @@ public class BallMovement : MonoBehaviour
         myRB = GetComponent<Rigidbody2D>();
 
         MovementRandom();
+
+        scoreManager = FindObjectOfType<ScoreManager>();
     }
 
     // Update is called once per frame
@@ -31,6 +34,21 @@ public class BallMovement : MonoBehaviour
         if (collision.gameObject.tag == "Wall")
         {
             myRB.velocity = new Vector2(myRB.velocity.x, myRB.velocity.y * -1);
+        }
+
+        if (collision.gameObject.tag == "ScorePointPlayer")
+        {
+            scoreManager.scoreEnemy++;
+            transform.position = Vector3.zero;
+            myRB.velocity = Vector3.zero;
+            MovementRandom();
+        }
+        if (collision.gameObject.tag == "ScorePointEnemy")
+        {
+            scoreManager.scorePlayer++;
+            transform.position = Vector3.zero;
+            myRB.velocity = Vector3.zero;
+            MovementRandom();
         }
     }
 
